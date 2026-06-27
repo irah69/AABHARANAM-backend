@@ -2,8 +2,12 @@ spring:
   application:
     name: ecommerce-api
 
+
+
   datasource:
-    url: jdbc:postgresql://dpg-d6k55knafjfc73ffefsg-a/murgan_pl46?user=murgan_pl46_user&password=FdMKLDZrMoQAAOeu08XmZxQOYJU1A9tv
+    url: jdbc:postgresql://localhost:5432/murgan
+    username: postgres
+    password: ram@1234
     driver-class-name: org.postgresql.Driver
 
   jpa:
@@ -35,3 +39,7 @@ app:
     email: ${APP_BOOTSTRAP_ADMIN_EMAIL:admin123@local}
     username: ${APP_BOOTSTRAP_ADMIN_USERNAME:admin123}
     password: ${APP_BOOTSTRAP_ADMIN_PASSWORD:123@admin}
+# Razorpay Configuration
+razorpay:
+  key-id: rzp_test_T6aWpzjd4Wp2dj
+  key-secret: rzp_test_T6aWpzjd4Wp2dj

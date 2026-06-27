@@ -33,6 +33,12 @@
 		<lombok.version>1.18.42</lombok.version>
 	</properties>
 	<dependencies>
+	<!-- Razorpay Payment Gateway -->
+<dependency>
+    <groupId>com.razorpay</groupId>
+    <artifactId>razorpay-java</artifactId>
+    <version>1.4.8</version>
+</dependency>
 		<!-- Web & validation -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
