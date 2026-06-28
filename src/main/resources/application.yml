@@ -41,5 +41,7 @@ app:
     password: ${APP_BOOTSTRAP_ADMIN_PASSWORD:123@admin}
 # Razorpay Configuration
 razorpay:
-  key-id: rzp_test_T6aWpzjd4Wp2dj
-  key-secret: rzp_test_T6aWpzjd4Wp2dj
+  key-id: rzp_test_T6kaciGdYOYzsp
+  key-secret: iiuShiEbTptWtZBOl3K4pDDB
+
+
