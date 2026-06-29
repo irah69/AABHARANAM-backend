@@ -1,7 +1,7 @@
 package com.murgan.ecommerce.service;
 
 import java.math.BigDecimal;
-
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
@@ -83,11 +83,18 @@ public class ProductService {
 	       }
 
 	@Transactional
-	public void delete(Long id) {
-		if (!productRepository.existsById(id)) {
-			throw new NotFoundException("Product not found");
-		}
-		productRepository.deleteById(id);
-	}
-}
+public void delete(Long id) {
+    if (!productRepository.existsById(id)) {
+        throw new NotFoundException("Product not found");
+    }
 
+    try {
+        productRepository.deleteById(id);
+        productRepository.flush(); // Force the delete now so we can catch DB errors
+    } catch (DataIntegrityViolationException e) {
+        throw new IllegalStateException(
+            "This product cannot be deleted because it has already been used in one or more orders."
+        );
+    }
+}
+}

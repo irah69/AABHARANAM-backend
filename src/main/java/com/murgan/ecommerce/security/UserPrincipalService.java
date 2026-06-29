@@ -25,11 +25,15 @@ public class UserPrincipalService implements UserDetailsService {
 		User user = userRepository.findByEmail(usernameOrEmail)
 			.or(() -> userRepository.findByUsername(usernameOrEmail))
 			.orElseThrow(() -> new UsernameNotFoundException("User not found"));
-
+        
 		List<SimpleGrantedAuthority> authorities = user.getRoles().stream()
 			.map(r -> new SimpleGrantedAuthority(r.getName()))
 			.toList();
+        System.out.println("User: " + user.getEmail());
 
+user.getRoles().forEach(role ->
+    System.out.println("Role = " + role.getName())
+);
 		return org.springframework.security.core.userdetails.User
 			.withUsername(user.getEmail())
 			.password(user.getPasswordHash())
